@@ -63,11 +63,11 @@ def main():
     xLL = appearances.query('leagueID == 4').drop(nonFeatures, axis=1)
     xLU = appearances.query('leagueID == 5').drop(nonFeatures, axis=1)
 
-    yPL = yTotal.query('leagueID == 1')
-    ySA = yTotal.query('leagueID == 2')
-    yBL = yTotal.query('leagueID == 3')
-    yLL = yTotal.query('leagueID == 4')
-    yLU = yTotal.query('leagueID == 5')
+    yPL = yTotal.query('leagueID == 1').drop('leagueID', axis=1)
+    ySA = yTotal.query('leagueID == 2').drop('leagueID', axis=1)
+    yBL = yTotal.query('leagueID == 3').drop('leagueID', axis=1)
+    yLL = yTotal.query('leagueID == 4').drop('leagueID', axis=1)
+    yLU = yTotal.query('leagueID == 5').drop('leagueID', axis=1)
 
     xPL = pd.DataFrame(pca.transform(xPL))
     xSA = pd.DataFrame(pca.transform(xSA))
