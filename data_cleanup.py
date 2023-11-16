@@ -1,5 +1,6 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 
 
 def main():
@@ -10,6 +11,12 @@ def main():
     BL = appearances.where('leagueID == 3')
     LL = appearances.where('leagueID == 4')
     LU = appearances.where('leagueID == 5')
+
+    PL.to_csv("/data")
+    SA.to_csv("/data")
+    BL.to_csv("/data")
+    LL.to_csv("/data")
+    LU.to_csv("/data")
     
     return None
 
