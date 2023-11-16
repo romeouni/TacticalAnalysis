@@ -62,30 +62,35 @@ def main():
     xBL = appearances.query('leagueID == 3').drop(nonFeatures, axis=1)
     xLL = appearances.query('leagueID == 4').drop(nonFeatures, axis=1)
     xLU = appearances.query('leagueID == 5').drop(nonFeatures, axis=1)
+    xWhole = appearances.drop(nonFeatures, axis=1)
 
     yPL = yTotal.query('leagueID == 1').drop('leagueID', axis=1)
     ySA = yTotal.query('leagueID == 2').drop('leagueID', axis=1)
     yBL = yTotal.query('leagueID == 3').drop('leagueID', axis=1)
     yLL = yTotal.query('leagueID == 4').drop('leagueID', axis=1)
     yLU = yTotal.query('leagueID == 5').drop('leagueID', axis=1)
+    yWhole = yTotal.drop('leagueID', axis=1)
 
     xPL = pd.DataFrame(pca.transform(xPL))
     xSA = pd.DataFrame(pca.transform(xSA))
     xBL = pd.DataFrame(pca.transform(xBL))
     xLL = pd.DataFrame(pca.transform(xLL))
     xLU = pd.DataFrame(pca.transform(xLU))
+    xWhole = pd.DataFrame(pca.transform(xWhole))
 
     xPL.to_csv('data/xEngland.csv', index=False)
     xSA.to_csv('data/xItaly.csv', index=False)
     xBL.to_csv('data/xGermany.csv', index=False)
     xLL.to_csv('data/xSpain.csv', index=False)
     xLU.to_csv('data/xFrance.csv', index=False)
+    xWhole.to_csv('data/xWhole.csv', index=False)
 
     yPL.to_csv('data/yEngland.csv', index=False)
     ySA.to_csv('data/yItaly.csv', index=False)
     yBL.to_csv('data/yGermany.csv', index=False)
     yLL.to_csv('data/ySpain.csv', index=False)
     yLU.to_csv('data/yFrance.csv', index=False)
+    yWhole.to_csv('data/yWhole.csv', index=False)
 
 if __name__ == "__main__":
     main()
