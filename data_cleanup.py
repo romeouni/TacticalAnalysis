@@ -29,20 +29,16 @@ def main():
     # 7: Wingers
     # 8: Strikers
     
-    yTotal = yTotal.replace(4, 2)
-    yTotal = yTotal.replace(5|6|7, 4)
-    yTotal = yTotal.replace(8|9|10, 5)
-    yTotal = yTotal.replace(11|12|13, 6)
-    yTotal = yTotal.replace(14|15, 7)
-    yTotal = yTotal.replace(16, 8)
+    # Replace values in yTotal using a dictionary
+    yTotal.replace({'positionOrder': {4: 2, 5: 4, 6: 4, 7: 4, 8: 5, 9: 5, 10: 5, 11: 6, 12: 6, 13: 6, 14: 7, 15: 7, 16: 8}}, inplace=True)
+    
 
-    print(yTotal['positionOrder']==17)
-
+    # Check if positionOrder is 17 and get indices
     subs = yTotal.index[yTotal['positionOrder'] == 17].tolist()
 
+    # Drop rows with positionOrder 17
     appearancesFeatures = appearancesFeatures.drop(index=subs)
     yTotal = yTotal.drop(index=subs)
-
 
     # Perform standard scaling on the features
     scaler = StandardScaler()
@@ -85,7 +81,7 @@ def main():
     plt.grid(axis='y')
     plt.show()
 
-    appearances = np.delete(appearances, subs, axis=0)
+    appearances = appearances.drop(index=subs)
     xPL = appearances.query('leagueID == 1').drop(nonFeatures, axis=1)
     xSA = appearances.query('leagueID == 2').drop(nonFeatures, axis=1)
     xBL = appearances.query('leagueID == 3').drop(nonFeatures, axis=1)
