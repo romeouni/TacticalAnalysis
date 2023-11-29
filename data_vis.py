@@ -19,7 +19,7 @@ def main():
 
     # Setting x-axis limits
     plt.xlim(-0.1, 1.5)
-    plt.savefig("data/selectedDisplay.png")
+    plt.savefig("Visualizations/selectedDisplay.png")
     plt.show()
     plt.close()
 
@@ -31,7 +31,7 @@ def main():
     plt.xlabel('Median xGoalsBuildup')
     plt.ylabel('Position')
     plt.title('Median xGoalsBuildup by Position')
-    plt.savefig("data/medianXGB.png")
+    plt.savefig("Visualizations/medianXGB.png")
     plt.show()
     plt.close()
 
@@ -46,7 +46,7 @@ def main():
     plt.figure(figsize=(10, 8))  # Set the figure size as per your preference
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f',vmin=-1, vmax=1)
     plt.title('Correlation Matrix of Offensive Stats')
-    plt.savefig("data/heatmap.png")
+    plt.savefig("Visualizations/heatmap.png")
     plt.show()
 
 if __name__=="__main__":
