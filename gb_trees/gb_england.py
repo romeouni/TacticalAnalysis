@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score
 import os
 
@@ -9,6 +10,7 @@ def main():
 
     xEngland = pd.read_csv(os.path.join(dataPath, 'xEngland.csv')).to_numpy()
     yEngland = pd.read_csv(os.path.join(dataPath, 'yEngland.csv')).to_numpy().ravel()
+    xTrain, xTest, yTrain, yTest = train_test_split(xEngland, yEngland, test_size=0.2, random_state=4)
 
     xFrance = pd.read_csv(os.path.join(dataPath, 'xFrance.csv')).to_numpy()
     yFrance = pd.read_csv(os.path.join(dataPath, 'yFrance.csv')).to_numpy().ravel()
@@ -23,11 +25,11 @@ def main():
     ySpain = pd.read_csv(os.path.join(dataPath, 'ySpain.csv')).to_numpy().ravel()
 
     model = HistGradientBoostingClassifier(max_iter=300, max_leaf_nodes=100, learning_rate=0.01)
-    model.fit(xEngland, yEngland)
+    model.fit(xTrain, yTrain)
 
-    enHat = model.predict(xEngland)
-    enAcc = accuracy_score(yEngland, enHat)
-    enF1 = f1_score(yEngland, enHat, average='weighted')
+    enHat = model.predict(xTest)
+    enAcc = accuracy_score(yTest, enHat)
+    enF1 = f1_score(yTest, enHat, average='weighted')
     print("Accuracy on Premier League:", enAcc)
     print("F1 Score on Premier League:", enF1)
 
@@ -60,16 +62,16 @@ def main():
     # Accuracy on Serie A: 0.4056972948956749
     # Accuracy on La Liga: 0.3940600488730156 
 
-    # Accuracy on Premier League: 0.4626965140123035
-    # F1 Score on Premier League: 0.44058535954043304
-    # Accuracy on Ligue 1: 0.3863761573868382
-    # F1 Score on Ligue 1: 0.35575290234979773
-    # Accuracy on Bundesliga: 0.3685249241347113
-    # F1 Score on Bundesliga: 0.339111114181104
-    # Accuracy on Serie A: 0.4057485602966558
-    # F1 Score on Serie A: 0.3822842443881276
-    # Accuracy on La Liga: 0.39363283719817493
-    # F1 Score on La Liga: 0.365211621022059
-    
+    # Accuracy on Premier League: 0.38345864661654133
+    # F1 Score on Premier League: 0.3532117163456673
+    # Accuracy on Ligue 1: 0.3867493646590485
+    # F1 Score on Ligue 1: 0.355822266060966
+    # Accuracy on Bundesliga: 0.3648749018525985
+    # F1 Score on Bundesliga: 0.3349862887116439
+    # Accuracy on Serie A: 0.40453527914010834
+    # F1 Score on Serie A: 0.3808584312323889
+    # Accuracy on La Liga: 0.38983919752559
+    # F1 Score on La Liga: 0.360769487189377
+
 if __name__=="__main__":
     main()

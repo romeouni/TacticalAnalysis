@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score
 import os
 
@@ -9,6 +10,7 @@ def main():
 
     xSpain = pd.read_csv(os.path.join(dataPath, 'xSpain.csv')).to_numpy()
     ySpain = pd.read_csv(os.path.join(dataPath, 'ySpain.csv')).to_numpy().ravel()
+    xTrain, xTest, yTrain, yTest = train_test_split(xSpain, ySpain, test_size=0.2, random_state=4)
 
     xItaly = pd.read_csv(os.path.join(dataPath, 'xItaly.csv')).to_numpy()
     yItaly = pd.read_csv(os.path.join(dataPath, 'yItaly.csv')).to_numpy().ravel()
@@ -23,11 +25,11 @@ def main():
     yFrance = pd.read_csv(os.path.join(dataPath, 'yFrance.csv')).to_numpy().ravel()
 
     model = HistGradientBoostingClassifier(max_iter=300, max_leaf_nodes=100, learning_rate=0.01)
-    model.fit(xSpain, ySpain)
+    model.fit(xTrain, yTrain)
 
-    spHat = model.predict(xSpain)
-    spAcc = accuracy_score(ySpain, spHat)
-    spF1 = f1_score(ySpain, spHat, average='weighted')
+    spHat = model.predict(xTest)
+    spAcc = accuracy_score(yTest, spHat)
+    spF1 = f1_score(yTest, spHat, average='weighted')
     print("Accuracy on La Liga:", spAcc)
     print("F1 Score on La Liga:", spF1)
     
