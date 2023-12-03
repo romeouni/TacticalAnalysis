@@ -5,25 +5,27 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Get datasets (5)
-xEngland = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/xEngland.csv").to_numpy()
-yEngland = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/yEngland.csv").to_numpy()
+xEngland = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/xEngland.csv").to_numpy()
+yEngland = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/yEngland.csv").to_numpy()
 
-xSpain = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/xSpain.csv").to_numpy()
-ySpain = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/ySpain.csv").to_numpy()
+xSpain = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/xSpain.csv").to_numpy()
+ySpain = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/ySpain.csv").to_numpy()
 
-xItaly = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/xItaly.csv").to_numpy()
-yItaly = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/yItaly.csv").to_numpy()
+xItaly = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/xItaly.csv").to_numpy()
+yItaly = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/yItaly.csv").to_numpy()
 
-xFrance = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/xFrance.csv").to_numpy()
-yFrance = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/yFrance.csv").to_numpy()
+xFrance = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/xFrance.csv").to_numpy()
+yFrance = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/yFrance.csv").to_numpy()
 
-xGermany = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/xGermany.csv").to_numpy()
-yGermany = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/yGermany.csv").to_numpy()
+xGermany = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/xGermany.csv").to_numpy()
+yGermany = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/yGermany.csv").to_numpy()
 
 # Helper function to get scaled train data and test data
-def trainTestScaled(xData, yData):
+def trainTest(xData, yData):
     n = xData.shape[0]
     permutation = np.random.permutation(n)
 
@@ -32,18 +34,14 @@ def trainTestScaled(xData, yData):
 
     xTrain, xTest, yTrain, yTest = train_test_split(xData, yData, test_size=0.2, random_state=4)
 
-    # Scale the data
-    scaler = StandardScaler()
-    trainData_scaled = scaler.fit_transform(xTrain)
-    testData_scaled = scaler.transform(xTest)
-    return trainData_scaled, testData_scaled, yTrain, yTest
+    return xTrain, xTest, yTrain, yTest
 
 # Get different train test data
-xTrain_E_scaled, xTest_E_scaled, yTrain_E, yTest_E = trainTestScaled(xEngland, yEngland)
-xTrain_S_scaled, xTest_S_scaled, yTrain_S, yTest_S = trainTestScaled(xSpain, ySpain)
-xTrain_I_scaled, xTest_I_scaled, yTrain_I, yTest_I = trainTestScaled(xItaly, yItaly)
-xTrain_F_scaled, xTest_F_scaled, yTrain_F, yTest_F = trainTestScaled(xFrance, yFrance)
-xTrain_G_scaled, xTest_G_scaled, yTrain_G, yTest_G = trainTestScaled(xGermany, yGermany)
+xTrain_E_scaled, xTest_E_scaled, yTrain_E, yTest_E = trainTest(xEngland, yEngland)
+xTrain_S_scaled, xTest_S_scaled, yTrain_S, yTest_S = trainTest(xSpain, ySpain)
+xTrain_I_scaled, xTest_I_scaled, yTrain_I, yTest_I = trainTest(xItaly, yItaly)
+xTrain_F_scaled, xTest_F_scaled, yTrain_F, yTest_F = trainTest(xFrance, yFrance)
+xTrain_G_scaled, xTest_G_scaled, yTrain_G, yTest_G = trainTest(xGermany, yGermany)
 
 # Define the logistic regression model with optimal hyperparameters
 logreg = LogisticRegression(multi_class='multinomial', solver='sag', C=100, max_iter=500)
@@ -87,3 +85,18 @@ acc4 = accuracy_score(yTest_G, yTest_pred4)
 print("Test Accuracy Germany:", acc4)
 f1_4 = f1_score(yTest_G, yTest_pred4, average='weighted')
 print("Test F1 Score:", f1_4)
+
+# Test Accuracy and F1 Score for other league test sets
+data = {
+    'Country': ['England', 'Spain', 'Italy', 'France', 'Germany'],
+    'Accuracy': [acc3, acc1, acc2, selfAcc, acc4],
+    'F1 Score': [selfF1, f1_1, f1_2, f1_3, f1_4]
+}
+
+df = pd.DataFrame(data)
+
+# Plotting the matrix
+plt.figure(figsize=(10, 6))
+sns.heatmap(df.pivot_table(index='Country', values=['Accuracy', 'F1 Score']), annot=True, cmap='coolwarm')
+plt.title('Accuracy vs. F1 Score Matrix (Original Country: France)')
+plt.show()

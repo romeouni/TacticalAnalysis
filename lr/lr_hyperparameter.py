@@ -6,8 +6,8 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 import numpy as np
 
-X = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/xWhole.csv").to_numpy()
-y = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis-main/data/yWhole.csv").to_numpy()
+X = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/xWhole.csv").to_numpy()
+y = pd.read_csv("/Users/dylanethan/Desktop/TacticalAnalysis/data/yWhole.csv").to_numpy()
 
 subs = np.where(y==17)[0]
 
