@@ -43,6 +43,9 @@ def main():
     # Accuracy of optimal model on test set: 0.4777218349859052   
 
     gbc.fit(xTrain, yTrain)
+    
+    yHat = gbc.predict(xTest)
+
     yHat = gbc.predict(xTrain)
 
     accuracy = accuracy_score(yTest, yHat)
