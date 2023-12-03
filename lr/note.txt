@@ -1,0 +1,66 @@
+These are the accuracies and f1 scores after running each of the LR
+
+
+Original Dataset: England
+Self-Test Accuracy: 0.3714114832535885
+Test F1 Score: 0.33610138800212264
+Test Accuracy Spain: 0.3577409432672591
+Test F1 Score: 0.30078412440320657
+Test Accuracy Italy: 0.40353725222146275
+Test F1 Score: 0.37141617293066254
+Test Accuracy France: 0.3601386173804869
+Test F1 Score: 0.3017972258896143
+Test Accuracy Germany: 0.35713527851458887
+Test F1 Score: 0.32074788615798394
+
+
+Original Dataset: Spain
+Self-Test Accuracy: 0.3860218728639781
+Test F1 Score: 0.34403588509432453
+Test Accuracy England: 0.36192754613807243
+Test F1 Score: 0.3155628350924418
+Test Accuracy Italy: 0.4002904989747095
+Test F1 Score: 0.3612064024646041
+Test Accuracy France: 0.37942065043540074
+Test F1 Score: 0.3341678481798933
+Test Accuracy Germany: 0.35257294429708225
+Test F1 Score: 0.30572136111157
+
+
+Original Dataset: Italy
+Self-Test Accuracy: 0.40900546821599454
+Test F1 Score: 0.3460162700986062
+Test Accuracy Spain: 0.35620300751879697
+Test F1 Score: 0.262167783775442
+Test Accuracy England: 0.3509911141490089
+Test F1 Score: 0.2792550079801792
+Test Accuracy France: 0.34378887506664296
+Test F1 Score: 0.24674955249819228
+Test Accuracy Germany: 0.3473740053050398
+Test F1 Score: 0.27683658824061136
+
+
+Original Dataset: Germany
+Self-Test Accuracy: 0.3616976127320955
+Test F1 Score: 0.3255358038560563
+Test Accuracy Spain: 0.3682501708817498
+Test F1 Score: 0.315022942071964
+Test Accuracy Italy: 0.4082365003417635
+Test F1 Score: 0.38007907196297636
+Test Accuracy France: 0.36813577394704106
+Test F1 Score: 0.31199243506215424
+Test Accuracy England: 0.3747436773752563
+Test F1 Score: 0.340434619711867
+
+
+Original Dataset: France
+Self-Test Accuracy: 0.3851963746223565
+Test F1 Score: 0.346068795006681
+Test Accuracy Spain: 0.3890123034859877
+Test F1 Score: 0.35240532161003985
+Test Accuracy Italy: 0.4025974025974026
+Test F1 Score: 0.36893133270619094
+Test Accuracy England: 0.3620984278879016
+Test F1 Score: 0.32029085916371847
+Test Accuracy Germany: 0.3573474801061008
+Test F1 Score: 0.31473257733697413
