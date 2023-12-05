@@ -30,7 +30,7 @@ def main():
     # 8: Strikers
     
     # Replace values in yTotal using a dictionary
-    yTotal.replace({'positionOrder': {4: 2, 5: 4, 6: 4, 7: 4, 8: 5, 9: 5, 10: 5, 11: 6, 12: 6, 13: 6, 14: 7, 15: 7, 16: 8}}, inplace=True)
+    # yTotal.replace({'positionOrder': {4: 2, 5: 4, 6: 4, 7: 4, 8: 5, 9: 5, 10: 5, 11: 6, 12: 6, 13: 6, 14: 7, 15: 7, 16: 8}}, inplace=True)
     
 
     # Check if positionOrder is 17 and get indices
