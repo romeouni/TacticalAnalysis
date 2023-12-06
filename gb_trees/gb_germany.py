@@ -58,11 +58,13 @@ def main():
     print("Accuracy on La Liga:", spAcc)
     print("F1 Score on La Liga:", spF1)
 
+    #ORIGINAL
     # Accuracy on Premier League: 0.37570061517429937
     # Accuracy on Ligue 1: 0.37430912225203933
     # Accuracy on Serie A: 0.3943847297458945
     # Accuracy on La Liga: 0.3849860728994002
 
+    #CONDENSED TARGET
     # Accuracy on Bundesliga: 0.3563925729442971
     # F1 Score on Bundesliga: 0.3288647055456212
     # Accuracy on Premier League: 0.3710868079289132
@@ -73,6 +75,18 @@ def main():
     # F1 Score on Serie A: 0.3708486574113448
     # Accuracy on La Liga: 0.38056015994805104
     # F1 Score on La Liga: 0.35586361697681124
+
+    #FULL TARGET
+    # Accuracy on Bundesliga: 0.30981432360742706
+    # F1 Score on Bundesliga: 0.2478677710301022
+    # Accuracy on Premier League: 0.310850991114149
+    # F1 Score on Premier League: 0.24633340897119613
+    # Accuracy on Ligue 1: 0.3097264923847945
+    # F1 Score on Ligue 1: 0.2460108418080554
+    # Accuracy on Serie A: 0.3499547155624669
+    # F1 Score on Serie A: 0.2976999294467179
+    # Accuracy on La Liga: 0.31572651617423403
+    # F1 Score on La Liga: 0.25257379370536687
 
 if __name__=="__main__":
     main()
