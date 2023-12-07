@@ -58,11 +58,12 @@ def main():
     for i in range(num_components):
         sorted_indices = np.argsort(loading_values[:, i])
         plt.figure(figsize=(10, 6))
-        plt.barh(range(len(loading_values)), loading_values[sorted_indices, i], align='center')
+        plt.barh(range(len(loading_values)), loading_values[sorted_indices, i], align='center', color="#57886C")
         plt.yticks(range(len(loading_values)), appearancesFeatures.columns[sorted_indices])
         plt.xlabel('Loading Value')
         plt.title(f'Principal Component {i+1} Loadings')
         plt.tight_layout()
+        plt.savefig(f'Visualizations/PCA_{i+1}.png')
         plt.show()
 
     # Get explained variance ratios for each principal component
@@ -73,12 +74,13 @@ def main():
     component_index = range(1, num_components + 1)
 
     plt.figure(figsize=(10, 6))
-    plt.bar(component_index, explained_var_ratio * 100, align='center', alpha=0.7)
+    plt.bar(component_index, explained_var_ratio * 100, align='center', alpha=0.7, color="#57886C")
     plt.xlabel('Principal Component')
     plt.ylabel('Explained Variance (%)')
     plt.title('Explained Variance of Principal Components')
     plt.xticks(component_index)
     plt.grid(axis='y')
+    plt.savefig('Visualizations/PCA_var.png')
     plt.show()
 
     appearances = appearances.drop(index=subs)
