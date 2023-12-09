@@ -95,20 +95,99 @@ def main():
 
     # Show plot
     plt.tight_layout()
+    plt.savefig('Visualizations/gb_england.png')
     plt.show()
     # Model trained on L1
     accs = [0.3206083390293917, 0.3309934245601564, 0.31173736816416614, 0.3643261163041064, 0.3261846579743331]
     F1 = [0.26294568501625754, 0.27305975292260715, 0.2583444892025933, 0.3182866995027068, 0.26819885446698444]
+
+    # Plotting the bar graph for accuracy scores
+    plt.figure(figsize=(10, 6))
+    plt.bar(indices, accs, bar_width, label='Accuracy', color='#81A684')
+
+    # Plotting the bar graph for F1 scores with an offset
+    plt.bar(indices + bar_width, F1, bar_width, label='F1 Score', color='#466060')
+
+    # Set labels, title, and ticks
+    plt.xlabel('Leagues')
+    plt.ylabel('Scores')
+    plt.title('Accuracy and F1 Scores from L1 Model')
+    plt.xticks(indices + bar_width / 2, leagueList)
+    plt.legend()
+
+    # Show plot
+    plt.tight_layout()
+    plt.savefig('Visualizations/gb_france.png')
+    plt.show()
+
     # Model trained on BL
     accs = [0.310850991114149, 0.3097264923847945, 0.30981432360742706, 0.3499547155624669, 0.31572651617423403]
     F1 = [0.24633340897119613,0.2460108418080554, 0.2478677710301022, 0.2976999294467179, 0.25257379370536687]
+
+    # Plotting the bar graph for accuracy scores
+    plt.figure(figsize=(10, 6))
+    plt.bar(indices, accs, bar_width, label='Accuracy', color='#81A684')
+
+    # Plotting the bar graph for F1 scores with an offset
+    plt.bar(indices + bar_width, F1, bar_width, label='F1 Score', color='#466060')
+
+    # Set labels, title, and ticks
+    plt.xlabel('Leagues')
+    plt.ylabel('Scores')
+    plt.title('Accuracy and F1 Scores from BL Model')
+    plt.xticks(indices + bar_width / 2, leagueList)
+    plt.legend()
+
+    # Show plot
+    plt.tight_layout()
+    plt.savefig('Visualizations/gb_germany.png')
+    plt.show()
+
     # Model trained on SA
     accs = [0.3226930963773069, 0.3239261405036521, 0.3146446533539885, 0.39166097060833904, 0.3251080845537347]
     F1 = [0.24160809893506816, 0.24139875542792918, 0.24060761368398526, 0.31816894702001813, 0.24552362141202203]
+
+    # Plotting the bar graph for accuracy scores
+    plt.figure(figsize=(10, 6))
+    plt.bar(indices, accs, bar_width, label='Accuracy', color='#81A684')
+
+    # Plotting the bar graph for F1 scores with an offset
+    plt.bar(indices + bar_width, F1, bar_width, label='F1 Score', color='#466060')
+
+    # Set labels, title, and ticks
+    plt.xlabel('Leagues')
+    plt.ylabel('Scores')
+    plt.title('Accuracy and F1 Scores from SA Model')
+    plt.xticks(indices + bar_width / 2, leagueList)
+    plt.legend()
+
+    # Show plot
+    plt.tight_layout()
+    plt.savefig('Visualizations/gb_italy.png')
+    plt.show()
+
     # Model trained on LL
     accs = [0.3172761449077239, 0.3250990776448844, 0.31477197971266685, 0.3621217040619286, 0.3233082706766917]
     F1 = [0.25526380407229704, 0.26243898540114946, 0.25545435515840637, 0.3110501820893058, 0.2626911137079997]
-    return None
+
+    # Plotting the bar graph for accuracy scores
+    plt.figure(figsize=(10, 6))
+    plt.bar(indices, accs, bar_width, label='Accuracy', color='#81A684')
+
+    # Plotting the bar graph for F1 scores with an offset
+    plt.bar(indices + bar_width, F1, bar_width, label='F1 Score', color='#466060')
+
+    # Set labels, title, and ticks
+    plt.xlabel('Leagues')
+    plt.ylabel('Scores')
+    plt.title('Accuracy and F1 Scores from PL Model')
+    plt.xticks(indices + bar_width / 2, leagueList)
+    plt.legend()
+
+    # Show plot
+    plt.tight_layout()
+    plt.savefig('Visualizations/gb_spain.png')
+    plt.show()
 
 if __name__=="__main__":
     main()
