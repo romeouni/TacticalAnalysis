@@ -48,7 +48,7 @@ xTrain_G_scaled, xTest_G_scaled, yTrain_G, yTest_G = trainTest(xGermany, yGerman
 
 # Create knn with optimal hyperparameters
 knn = KNeighborsClassifier(n_neighbors=95, weights='uniform', p=2)
-knn.fit(xTrain_E_scaled, yTrain_E)
+knn.fit(xTrain_F_scaled, yTrain_F)
 
 # NOTE: The original dataset for this script is FRANCE
 print("Original Dataset: France")
